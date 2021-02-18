@@ -29,6 +29,7 @@
 		F466B15B25DD7BA6002C315F /* AudioTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466B15A25DD7BA6002C315F /* AudioTrack.swift */; };
 		F466B15E25DD7BB4002C315F /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466B15D25DD7BB4002C315F /* Artist.swift */; };
 		F466B16125DD7BBD002C315F /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466B16025DD7BBD002C315F /* UserProfile.swift */; };
+		F466B16425DE9193002C315F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F466B16325DE9193002C315F /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		F466B15A25DD7BA6002C315F /* AudioTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrack.swift; sourceTree = "<group>"; };
 		F466B15D25DD7BB4002C315F /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		F466B16025DD7BBD002C315F /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		F466B16325DE9193002C315F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				F466B11625DD7837002C315F /* Assets.xcassets */,
 				F466B10D25DD7835002C315F /* AppDelegate.swift */,
 				F466B10F25DD7835002C315F /* SceneDelegate.swift */,
+				F466B16325DE9193002C315F /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				F466B14025DD7B09002C315F /* SettingViewController.swift in Sources */,
 				F466B10E25DD7835002C315F /* AppDelegate.swift in Sources */,
 				F466B16125DD7BBD002C315F /* UserProfile.swift in Sources */,
+				F466B16425DE9193002C315F /* Extensions.swift in Sources */,
 				F466B14925DD7B30002C315F /* PlaylistViewController.swift in Sources */,
 				F466B15E25DD7BB4002C315F /* Artist.swift in Sources */,
 				F466B13225DD7ACD002C315F /* LibraryViewController.swift in Sources */,
@@ -406,6 +410,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5K3J6VS4VX;
 				INFOPLIST_FILE = SpotifyCopy/Info.plist;
@@ -415,6 +420,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chanwoong.SpotifyCopy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -425,6 +431,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5K3J6VS4VX;
 				INFOPLIST_FILE = SpotifyCopy/Info.plist;
@@ -434,6 +441,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chanwoong.SpotifyCopy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
