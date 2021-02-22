@@ -1,0 +1,6 @@
+framework module Pods_SpotifyCopy {
+  umbrella header "Pods-SpotifyCopy-umbrella.h"
+
+  export *
+  module * { export * }
+}
