@@ -10,6 +10,8 @@ import Foundation
 final class AuthManager {
     static let shared = AuthManager()
     
+    private var refreshingToken = false
+    
     struct Constants {
         static let clientID = "55d2e4a281a341d1af2aabd97f5f9bed"
         static let clientSecret = "fd1e413244d143e7b1bfcce77b1adcaf"
@@ -100,16 +102,45 @@ final class AuthManager {
         
     }
     
+    private var onRefreshBlocks = [((String) -> Void)]()
+    
+    /// Supplies valid token to be used with API Calls
+    public func withValidToken(completion: @escaping (String) -> Void) {
+        guard !refreshingToken else {
+            // Append the completion
+            onRefreshBlocks.append(completion)
+            return
+        }
+        
+        if shouldRefreshToken {
+            // Refresh
+            refreshIfNeeded {[weak self] (success) in
+                if let token = self?.accessToken, success {
+                    completion(token)
+                }
+            }
+        } else if let token = accessToken {
+            completion(token)
+        }
+        
+        
+    }
+    
     public func refreshIfNeeded(completion: @escaping (Bool) -> Void) {
-//        guard shouldRefreshToken else {
-//            completion(true)
-//            return
-//        }
+        guard !refreshingToken else { return }
+        
+        guard shouldRefreshToken else {
+            completion(true)
+            return
+        }
+        
         guard let refreshToken = self.refreshToken else {
             return
         }
         // Refresh the token
         guard let url = URL(string: Constants.tokenAPIRUL) else { return }
+        
+        refreshingToken = true
         
         var components = URLComponents()
         components.queryItems = [
@@ -135,15 +166,20 @@ final class AuthManager {
         request.setValue("Basic \(base64String)", forHTTPHeaderField: "Authorization")
         
         
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+        let task = URLSession.shared.dataTask(with: request) {[weak self] data, _, error in
+            self?.refreshingToken = false
             guard let data = data, error == nil else {
                 return
             }
             
             do {
                 let result = try JSONDecoder().decode(AuthResponse.self, from: data)
+                self?.onRefreshBlocks.forEach {
+                    $0(result.access_token)
+                }
+                self?.onRefreshBlocks.removeAll()
                 print("Successfully refesh")
-                self.cacheToken(result: result)
+                self?.cacheToken(result: result)
                 
                 completion(true)
             } catch {
