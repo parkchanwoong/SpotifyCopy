@@ -41,6 +41,25 @@ final class APICaller {
         }
     }
     
+    public func getNewReleases(completion: @escaping ((Result<String, Error>)) -> Void) {
+        createRequest(with: URL(string: Constants.baseAPIRUL +
+                        "/browse/new-release?limit=50"), type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                } catch {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    
     // MAKR: - Private
     
     enum HTTPMethod: String {
