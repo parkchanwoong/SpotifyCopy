@@ -71,14 +71,10 @@ class NewReleaseCollectionViewCell: UICollectionViewCell {
                                       width: albumLabelSize.width,
                                       height: albumLabelHeight)
         
-        albumNameLabel.backgroundColor = .red
-        
         artistNameLabel.frame = CGRect(x: albumCoverImageView.right + 10,
                                        y: albumNameLabel.bottom,
                                        width: contentView.width - albumCoverImageView.right - 10,
                                        height: 30)
-        
-        artistNameLabel.backgroundColor = .blue
         
         numberOfTracksLabel.frame = CGRect(x: albumCoverImageView.right + 10,
                                            y: contentView.bottom - 44,
