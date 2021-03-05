@@ -149,11 +149,12 @@ class HomeViewController: UIViewController {
     
 }
 
-
+// MARK: - UICollectionViewDelegate
 extension HomeViewController: UICollectionViewDelegate {
     
 }
 
+// MARK: - UICollectionViewDataSource
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let type = sections[section]
